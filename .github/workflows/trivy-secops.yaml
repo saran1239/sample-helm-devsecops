@@ -24,16 +24,15 @@ jobs:
           python-version: 3.7
 
       - name: Run Trivy vulnerability scanner in IaC mode
-        uses: aquasecurity/trivy-action@0.43.1 # tag=0.8.0
+        uses: aquasecurity/trivy-action@0.18.0 # tag=0.8.0
         with:
           scan-type: 'config'
-          hide-progress: false
+          hide-progress: true
           format: 'sarif'
           scan-ref: 'chart/sample-helm-devsecops'
           output: 'trivy-results.sarif'
           exit-code: '1'
-          ignore-unfixed: true
-          ACTIONS_STEP_DEBUG: true
+          ignore-unfixed: false
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3.24.6 # v2.1.34
