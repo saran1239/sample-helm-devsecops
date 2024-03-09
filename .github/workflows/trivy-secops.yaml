@@ -33,6 +33,7 @@ jobs:
           output: 'trivy-results.sarif'
           exit-code: '1'
           ignore-unfixed: true
+          ACTIONS_STEP_DEBUG: true
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3.24.6 # v2.1.34
